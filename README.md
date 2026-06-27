@@ -48,8 +48,6 @@ RedTeam Sentinel uses a classic modular full-stack architecture, decoupling clie
 
 ### 3.1 Architecture Overview Diagram
 
-```mermaid
-graph TD
     %% Client-Side Components
     subgraph Client [React 19 Frontend SPA - Port 3000]
         UI[Tailwind UI Views]
@@ -102,6 +100,9 @@ graph TD
 
 The security and legality of the platform hinge on the Target Ownership Verification sequence. The diagram below illustrates how verification requests are processed:
 
+<img width="965" height="618" alt="Screenshot 2026-06-27 at 5 59 31 PM" src="https://github.com/user-attachments/assets/99ef6516-3339-4627-bc63-b6d4c0dab1bc" />
+
+
 ```mermaid
 sequenceDiagram
     autonumber
@@ -140,9 +141,6 @@ sequenceDiagram
     end
 end
 ```
-<img width="1672" height="941" alt="ChatGPT Image Jun 27, 2026, 05_51_29 PM" src="https://github.com/user-attachments/assets/6658a26e-39bb-404c-a870-a79651204bcf" />
-<img width="1672" height="941" alt="ChatGPT Image Jun 27, 2026, 05_51_29 PM" src="https://github.com/user-attachments/assets/b003d1a5-6b88-4d6a-b488-5e8dc6d2e568" />
-
 
 ### 3.3 Scan Execution and AI Enrichment Flow
 
@@ -308,6 +306,9 @@ The Dashboard represents the centralized control console for all system assets. 
 │  └──────────────────────────────────────────────────────────────────────────────────┘  │
 └────────────────────────────────────────────────────────────────────────────────────────┘
 ```
+<img width="1456" height="714" alt="Screenshot 2026-06-27 at 6 16 43 PM" src="https://github.com/user-attachments/assets/1169ad9e-9c83-47f5-9de6-3df7b18068c0" />
+
+
 
 ### 6.1 Interactive UI Panels
  System Summary Cards: Displays four real-time metrics: Overall Security Posture, Active Scanner Pipelines, Total Registered Target Scopes, and Scope Verification Success Rate.
@@ -318,6 +319,8 @@ The Dashboard represents the centralized control console for all system assets. 
 ---
 
 ## 7. Authentication & Authorization
+<img width="1406" height="739" alt="Screenshot 2026-06-27 at 6 08 06 PM" src="https://github.com/user-attachments/assets/19f0f9f9-7810-493c-a222-4b99155d81fd" />
+
 
 RedTeam Sentinel implements a robust Role-Based Access Control (RBAC) authorization matrix. A user's role defines their system permissions:
 
@@ -460,6 +463,7 @@ Governs workspace identity.
 ## 9. API Documentation
 
 RedTeam Sentinel provides a clean, well-structured REST API interface to manage all operations.
+<img width="1449" height="692" alt="Screenshot 2026-06-27 at 6 06 35 PM" src="https://github.com/user-attachments/assets/b50d6578-39c6-417a-aeb7-66e991542770" />
 
 ### 9.1 REST Endpoint Reference
 
@@ -792,6 +796,10 @@ Every vulnerability is ready for immediate synchronization with team project tra
   }
 }
 ```
+<img width="482" height="528" alt="Screenshot 2026-06-27 at 6 19 13 PM" src="https://github.com/user-attachments/assets/c6fad9b9-a5d3-4feb-a7f7-2aa77c210e46" />
+<img width="466" height="204" alt="Screenshot 2026-06-27 at 6 21 38 PM" src="https://github.com/user-attachments/assets/307fbc18-4022-4103-98c4-a1001e109f5f" />
+
+
 
 ### 14.2 CI/CD Pipeline Automation integration
 RedTeam Sentinel allows teams to automate scanning within build pipelines (such as GitHub Actions). A typical automation workflow follows this sequence:
@@ -1054,5 +1062,5 @@ To expand the platform's capabilities, the product team recommends three future 
 1. Automated Pull Request Generation: Integrate the Gemini model with developer workflows to automatically generate GitHub Pull Requests that resolve identified header vulnerabilities (e.g., adding secure CSP headers).
 2. Deep Dynamic API Security Testing (DAST): Implement secure active scanning to identify complex logical flaws in REST and GraphQL APIs.
 3. Multi-Asset Security Graph Visualizations: Expand the dashboard to render interactive, node-based security maps using visualization libraries (such as D3.js). This will allow teams to visualize network exposures across their entire digital ecosystem.
-<img width="998" height="630" alt="Screenshot 2026-06-27 at 5 44 22 PM" src="https://github.com/user-attachments/assets/a99891d1-e9f9-4250-afa5-c44fe59d5e2a" />
+
 
