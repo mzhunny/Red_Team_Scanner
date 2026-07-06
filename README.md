@@ -55,6 +55,22 @@ RedTeam Sentinel is designed around a safer model:
 
 ---
 
+## Runnable Safe Demo
+
+This repo now includes a small runnable Express demo that proves the workflow safely:
+
+- Lists sample targets
+- Blocks scans against unverified targets
+- Allows a safe demo scan only against a verified lab target
+- Generates static passive-style findings
+- Enforces basic RBAC using the `x-demo-role` request header
+- Records audit log events
+- Provides a browser dashboard at `http://localhost:3000`
+
+The demo does **not** execute exploit payloads, brute force, credential attacks, SQL injection, destructive testing, or unauthorized network scanning.
+
+---
+
 ## What I Built / Designed
 
 This repository documents and organizes a defensive security platform concept with the following components:
@@ -74,7 +90,15 @@ This repository documents and organizes a defensive security platform concept wi
 Red_Team_Scanner/
 ├── README.md
 ├── SECURITY.md
+├── package.json
 ├── .env.example
+├── src/
+│   ├── server.js
+│   └── data.js
+├── public/
+│   └── index.html
+├── tests/
+│   └── smoke.test.js
 ├── docs/
 │   ├── architecture.md
 │   ├── safe-scanning-policy.md
@@ -128,21 +152,70 @@ This project does **not** include or endorse:
 
 ---
 
-## Quick Start / Local Setup Placeholder
-
-This portfolio currently emphasizes product design, security requirements, QA evidence, and governance artifacts. If runnable source code is added, use this section to document setup.
-
-Suggested local setup format:
+## Quick Start
 
 ```bash
 git clone https://github.com/mzhunny/Red_Team_Scanner.git
 cd Red_Team_Scanner
 cp .env.example .env
 npm install
-npm run dev
+npm start
 ```
 
-Required environment variables should be documented in `.env.example`.
+Open the browser demo:
+
+```text
+http://localhost:3000
+```
+
+Run the smoke test:
+
+```bash
+npm test
+```
+
+---
+
+## Demo API Examples
+
+Health check:
+
+```bash
+curl http://localhost:3000/api/health
+```
+
+List demo targets:
+
+```bash
+curl http://localhost:3000/api/targets
+```
+
+Run a safe demo scan against the verified lab target:
+
+```bash
+curl -X POST http://localhost:3000/api/scans \
+  -H "Content-Type: application/json" \
+  -H "x-demo-role: security_engineer" \
+  -d '{"targetId":"tgt-lab-001","type":"passive_demo"}'
+```
+
+Test that unverified targets are blocked:
+
+```bash
+curl -X POST http://localhost:3000/api/scans \
+  -H "Content-Type: application/json" \
+  -H "x-demo-role: security_engineer" \
+  -d '{"targetId":"tgt-unverified-001","type":"passive_demo"}'
+```
+
+Test RBAC blocking with Auditor role:
+
+```bash
+curl -X POST http://localhost:3000/api/scans \
+  -H "Content-Type: application/json" \
+  -H "x-demo-role: auditor" \
+  -d '{"targetId":"tgt-lab-001","type":"passive_demo"}'
+```
 
 ---
 
