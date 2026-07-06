@@ -1,0 +1,21 @@
+{
+  "projectKey": "SEC",
+  "issueType": "Bug",
+  "summary": "Missing Content-Security-Policy header on verified lab target",
+  "priority": "Medium",
+  "labels": ["security", "web-header", "passive-scan", "needs-review"],
+  "description": "RedTeam Sentinel identified that the verified lab target does not return a Content-Security-Policy header. This finding was generated from passive header review only. No exploit payloads or intrusive tests were executed.",
+  "acceptanceCriteria": [
+    "Content-Security-Policy is defined and reviewed by the application owner.",
+    "Policy is tested in report-only mode before enforcement.",
+    "Security reviewer validates the final header configuration.",
+    "Evidence of remediation is attached to the ticket."
+  ],
+  "complianceMapping": {
+    "owasp": "Security Misconfiguration",
+    "soc2": "System operations / logical access control theme",
+    "gdpr": "Security of processing",
+    "isoStyle": "Secure configuration management"
+  },
+  "humanReviewRequired": true
+}
