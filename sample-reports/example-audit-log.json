@@ -1,0 +1,31 @@
+{
+  "auditLogId": "LOG-20260706-001",
+  "timestamp": "2026-07-06T10:00:00Z",
+  "actor": {
+    "userId": "user-sec-001",
+    "role": "Security Engineer"
+  },
+  "action": "PASSIVE_SCAN_REQUESTED",
+  "target": {
+    "targetId": "tgt-lab-001",
+    "targetValue": "https://example-lab.local",
+    "verificationStatus": "verified_lab_target",
+    "verificationMethod": "html_file_challenge"
+  },
+  "authorization": {
+    "authChecked": true,
+    "scopeStatus": "approved_lab_scope",
+    "humanApprovalRequired": true
+  },
+  "result": {
+    "status": "success",
+    "scanType": "passive_security_posture_review",
+    "findingsGenerated": 3
+  },
+  "securityNotes": [
+    "No exploit payloads executed.",
+    "No credential attacks performed.",
+    "Passive header and metadata review only.",
+    "Findings require human validation before remediation."
+  ]
+}
