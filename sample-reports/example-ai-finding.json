@@ -1,0 +1,23 @@
+{
+  "findingId": "AI-F-001",
+  "target": "https://example-lab.local",
+  "type": "web_header",
+  "title": "Missing Content-Security-Policy Header",
+  "severity": "medium",
+  "evidence": {
+    "source": "passive_header_review",
+    "observedHeader": "Content-Security-Policy",
+    "status": "missing",
+    "reviewPeriod": "2026-07-06"
+  },
+  "description": "The target response did not include a Content-Security-Policy header. This may reduce browser-side defense against unauthorized script or content loading behaviors.",
+  "recommendation": "Define and test a Content-Security-Policy aligned to the application. Start with report-only mode, review violations, then enforce once validated.",
+  "complianceMapping": {
+    "owasp": ["Security Misconfiguration"],
+    "soc2": ["Logical Access and System Operations"],
+    "gdpr": ["Security of Processing"],
+    "isoStyle": ["Secure Configuration Management"]
+  },
+  "humanReviewRequired": true,
+  "aiLimitations": "This recommendation is AI-assisted and must be validated by a human security reviewer before remediation is finalized."
+}
