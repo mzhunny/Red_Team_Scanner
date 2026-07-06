@@ -1,0 +1,26 @@
+{
+  "name": "redteam-sentinel-safe-demo",
+  "version": "1.0.0",
+  "description": "Authorized passive security scanner and AI compliance mapping portfolio demo.",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "test": "node tests/smoke.test.js"
+  },
+  "keywords": [
+    "security-qa",
+    "grc",
+    "iam",
+    "rbac",
+    "agentic-ai-security",
+    "portfolio"
+  ],
+  "author": "Chantal Brown",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {}
+}
