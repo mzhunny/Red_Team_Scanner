@@ -89,7 +89,6 @@ This repository documents and organizes a defensive security platform concept wi
 Red_Team_Scanner/
 ├── README.md
 ├── SECURITY.md
-├── .env.example
 ├── docs/
 │   ├── architecture.md
 │   ├── safe-scanning-policy.md
