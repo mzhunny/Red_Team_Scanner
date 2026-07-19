@@ -16,7 +16,7 @@ This project demonstrates:
 
 - Permission-based target verification before scanning
 - Passive security header and TLS posture review concepts
-- AI-assisted vulnerability finding enrichment
+- AI-assisted vulnerability finding enrichment design
 - Compliance mapping to OWASP, SOC 2, GDPR, and ISO/ISO-style control areas
 - RBAC-aware security operations workflow
 - Audit logging and evidence readiness
@@ -24,6 +24,21 @@ This project demonstrates:
 - Human approval boundaries for AI-assisted recommendations
 
 The value of this project is not just the scanner idea. The value is the **security governance around the scanner**: authorization, scope control, RBAC, auditability, compliance traceability, and safe AI usage.
+
+---
+
+## Important Portfolio Boundary
+
+This repository is intentionally presented as a **documentation-based security portfolio**. Public source code for any runnable scanner or application logic has been removed to avoid exposing implementation details.
+
+The repo focuses on safe, recruiter-friendly evidence of:
+
+- Security product thinking
+- QA test planning
+- IAM/RBAC and GRC documentation
+- Audit evidence readiness
+- Safe scanning policy design
+- AI governance and human approval controls
 
 ---
 
@@ -49,25 +64,9 @@ RedTeam Sentinel is designed around a safer model:
 | IAM / RBAC | Role-based access model for Owner, Admin, Security Engineer, Developer, Compliance Manager, and Auditor. |
 | GRC | Compliance mapping, audit evidence, control-owner review, risk documentation. |
 | Agentic AI Security | AI recommendation boundaries, prompt injection awareness, human approval gates. |
-| API Testing | REST endpoint documentation, request/response examples, authorization checks. |
+| API Testing | API workflow documentation, request/response expectations, authorization checks. |
 | Secure Product Thinking | Scope gating, legal authorization, logging, least privilege, safe failure design. |
 | Documentation | Architecture, QA artifacts, security policy, sample reports, and evidence packages. |
-
----
-
-## Runnable Safe Demo
-
-This repo now includes a small runnable Express demo that proves the workflow safely:
-
-- Lists sample targets
-- Blocks scans against unverified targets
-- Allows a safe demo scan only against a verified lab target
-- Generates static passive-style findings
-- Enforces basic RBAC using the `x-demo-role` request header
-- Records audit log events
-- Provides a browser dashboard at `http://localhost:3000`
-
-The demo does **not** execute exploit payloads, brute force, credential attacks, SQL injection, destructive testing, or unauthorized network scanning.
 
 ---
 
@@ -77,7 +76,7 @@ This repository documents and organizes a defensive security platform concept wi
 
 - **Scope Guard:** verifies target authorization before scans are allowed.
 - **Safe Scan Engine:** performs passive checks such as security headers, TLS posture, CORS configuration, and non-invasive metadata review.
-- **AI Posture Reviewer:** enriches findings and remediation recommendations using an LLM workflow.
+- **AI Posture Reviewer:** enriches findings and remediation recommendations using a human-reviewed LLM workflow.
 - **Compliance Mapper:** maps findings to OWASP, SOC 2, GDPR, and ISO-style control areas.
 - **RBAC Model:** separates access by security, developer, compliance, audit, and admin roles.
 - **Audit Log Model:** tracks security-relevant actions and review evidence.
@@ -90,15 +89,7 @@ This repository documents and organizes a defensive security platform concept wi
 Red_Team_Scanner/
 ├── README.md
 ├── SECURITY.md
-├── package.json
 ├── .env.example
-├── src/
-│   ├── server.js
-│   └── data.js
-├── public/
-│   └── index.html
-├── tests/
-│   └── smoke.test.js
 ├── docs/
 │   ├── architecture.md
 │   ├── safe-scanning-policy.md
@@ -152,73 +143,6 @@ This project does **not** include or endorse:
 
 ---
 
-## Quick Start
-
-```bash
-git clone https://github.com/mzhunny/Red_Team_Scanner.git
-cd Red_Team_Scanner
-cp .env.example .env
-npm install
-npm start
-```
-
-Open the browser demo:
-
-```text
-http://localhost:3000
-```
-
-Run the smoke test:
-
-```bash
-npm test
-```
-
----
-
-## Demo API Examples
-
-Health check:
-
-```bash
-curl http://localhost:3000/api/health
-```
-
-List demo targets:
-
-```bash
-curl http://localhost:3000/api/targets
-```
-
-Run a safe demo scan against the verified lab target:
-
-```bash
-curl -X POST http://localhost:3000/api/scans \
-  -H "Content-Type: application/json" \
-  -H "x-demo-role: security_engineer" \
-  -d '{"targetId":"tgt-lab-001","type":"passive_demo"}'
-```
-
-Test that unverified targets are blocked:
-
-```bash
-curl -X POST http://localhost:3000/api/scans \
-  -H "Content-Type: application/json" \
-  -H "x-demo-role: security_engineer" \
-  -d '{"targetId":"tgt-unverified-001","type":"passive_demo"}'
-```
-
-Test RBAC blocking with Auditor role:
-
-```bash
-curl -X POST http://localhost:3000/api/scans \
-  -H "Content-Type: application/json" \
-  -H "x-demo-role: auditor" \
-  -d '{"targetId":"tgt-lab-001","type":"passive_demo"}'
-```
-
----
-
 ## Documentation
 
 - [Architecture Overview](docs/architecture.md)
@@ -254,4 +178,4 @@ RedTeam Sentinel demonstrates my ability to think like a Security QA Analyst, IA
 
 ## Disclaimer
 
-This repository is for educational and portfolio demonstration purposes only. All sample targets, findings, users, logs, tickets, and reports are fictional.
+This repository is for educational and portfolio demonstration purposes only. All sample targets, findings, users, logs, tickets, and reports are fictional. Public runnable source code has intentionally been removed from this portfolio repository.
